@@ -10,7 +10,7 @@ const AuthLayout = () => {
                     <span className="btn btn-ghost text-primary text-3xl font-extrabold">Book Courier</span>
                 </Link>
             </div>
-            <div>
+            <div className='w-4/12 mx-auto'>
                 <Outlet></Outlet>
             </div>
 

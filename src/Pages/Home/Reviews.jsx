@@ -88,7 +88,7 @@ const Review = () => {
                         <div className="bg-white p-6 rounded-xl shadow-xl max-w-sm mx-auto h-full flex flex-col justify-between text-center">
 
                             {/* Title */}
-                            <h3 className="text-primary font-semibold mb-3">
+                            <h3 className="text-primary text-2xl font-semibold mb-3">
                                 {review.title}
                             </h3>
 

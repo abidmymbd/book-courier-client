@@ -1,12 +1,23 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router';
+import useAuth from '../../Hooks/useAuth';
 
 const Header = () => {
 
+    const { user, logOut } = useAuth();
+
+    const handleSignOut = () => {
+        logOut()
+            .then()
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
     const links = <>
-        <li><NavLink to='/books'>Books</NavLink></li>
-        <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
-        <li><NavLink to='/coverage'>Coverage</NavLink></li>
+        <li className='font-semibold'><NavLink to='/books'>Books</NavLink></li>
+        <li className='font-semibold'><NavLink to='/dashboard'>Dashboard</NavLink></li>
+        <li className='font-semibold'><NavLink to='/coverage'>Coverage</NavLink></li>
     </>
 
     return (
@@ -32,7 +43,11 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                {
+                    user ?
+                        <a onClick={handleSignOut} className="btn">Sign Out</a>
+                        : <Link className='btn' to="/login">Log in</Link>
+                }
             </div>
         </div>
     );
