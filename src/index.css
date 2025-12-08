@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+    themes: light --default
+}
+
+@plugin "daisyui/theme" {
+    name: "light";
+    default: true;
+    --color-primary: #3f3a64;
+    --color-secondary: #f2295b;
+}
+
+.swiper-slide {
+    width: auto !important;
+}
