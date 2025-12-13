@@ -8,7 +8,7 @@ const Footer = () => {
         <footer className="footer footer-horizontal footer-center bg-gray-200 text-primary p-10">
             <aside>
                 <Link to='/'>
-                    <span className="btn btn-ghost text-3xl font-extrabold">eBook</span>
+                    <span className="text-3xl font-extrabold">eBook</span>
                 </Link>
                 <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
             </aside>

@@ -7,7 +7,7 @@ const AuthLayout = () => {
 
             <div>
                 <Link to='/'>
-                    <span className="btn btn-ghost text-primary text-3xl font-extrabold">Book Courier</span>
+                    <span className="text-primary text-3xl font-extrabold">Book Courier</span>
                 </Link>
             </div>
             <div className='w-4/12 mx-auto'>

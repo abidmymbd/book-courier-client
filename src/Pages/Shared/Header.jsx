@@ -15,9 +15,13 @@ const Header = () => {
     }
 
     const links = <>
-        <li className='font-semibold'><NavLink to='/books'>Books</NavLink></li>
-        <li className='font-semibold'><NavLink to='/dashboard'>Dashboard</NavLink></li>
-        <li className='font-semibold'><NavLink to='/coverage'>Coverage</NavLink></li>
+        <li className='font-semibold text-secondary'><NavLink to='/books'>Books</NavLink></li>
+        <li className='font-semibold text-secondary'><NavLink to='/coverage'>Coverage</NavLink></li>
+        {
+            user && <>
+                <li className='font-semibold text-secondary'><NavLink to='/dashboard'>Dashboard</NavLink></li>
+            </>
+        }
     </>
 
     return (
@@ -34,7 +38,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <Link to='/'>
-                    <span className="btn btn-ghost text-3xl font-extrabold">Book Courier</span>
+                    <span className="text-3xl font-extrabold">Book Courier</span>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -44,10 +48,31 @@ const Header = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user ?
-                        <a onClick={handleSignOut} className="btn">Sign Out</a>
-                        : <Link className='btn' to="/login">Log in</Link>
+                    user && (
+                        <div className="flex items-center gap-3">
+                            <img
+                                src={user.photoURL}
+                                alt="Profile"
+                                title={user.displayName}
+                                className="w-10 h-10 rounded-full" />
+                            <button
+                                onClick={handleSignOut}
+                                className="btn text-secondary font-semibold px-6 hover:bg-secondary hover:text-white transition-all duration-200 delay-100">
+                                Sign Out
+                            </button>
+                        </div>
+                    )
                 }
+                {
+                    !user && (
+                        <Link
+                            className='btn text-secondary font-semibold px-6 hover:bg-secondary hover:text-white transition-all duration-200 delay-100'
+                            to="/login">
+                            Sign in
+                        </Link>
+                    )
+                }
+
             </div>
         </div>
     );

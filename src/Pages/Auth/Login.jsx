@@ -49,7 +49,7 @@ const Login = () => {
                     </p>}
                     {errors.password?.type === 'pattern' && <p className='text-red-500'>Password must have at least one uppercase, at least one lowercase, at least one number, and at least one special characters</p>}
 
-                    <button className="btn btn-primary text-white mt-4">Register</button>
+                    <button className="btn btn-primary text-white mt-4 hover:bg-secondary hover:text-white transition-all duration-200 delay-100 border-none">Login</button>
                 </fieldset>
                 <p>New to Book Courier ?<Link
                     state={location.state}
