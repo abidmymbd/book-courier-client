@@ -15,6 +15,9 @@ import SingleBook from "../Pages/Books/SingleBook";
 import Orders from "../Pages/Dashboard/Orders";
 import MyOrders from "../Pages/Dashboard/MyOrders";
 import Payment from "../Pages/Dashboard/Payment";
+import PaymentSuccess from "../Pages/Dashboard/PaymentSuccess";
+import PaymentCancel from "../Pages/Dashboard/PaymentCancel";
+import MyProfile from "../Pages/Dashboard/MyProfile";
 
 
 export const router = createBrowserRouter([
@@ -81,8 +84,20 @@ export const router = createBrowserRouter([
                 Component: Payment,
             },
             {
+                path: 'payment-success',
+                Component: PaymentSuccess,
+            },
+            {
+                path: 'payment-cancelled',
+                Component: PaymentCancel,
+            },
+            {
                 path: 'edit-book/:id',
                 Component: EditBook,
+            },
+            {
+                path: 'my-profile',
+                Component: MyProfile,
             },
         ]
     },

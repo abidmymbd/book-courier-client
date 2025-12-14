@@ -14,39 +14,33 @@ const Register = () => {
     const navigate = useNavigate();
 
     const handleRegistration = (data) => {
-        console.log('after register', data.photo[0]);
         const profilePic = data.photo[0];
 
         registerUser(data.email, data.password)
-            .then(result => {
-                console.log(result.user);
-
+            .then(() => {
                 const formData = new FormData();
                 formData.append('image', profilePic);
 
-                const imageAPIURL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_bb}`
+                const imageAPIURL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_bb}`;
 
                 axios.post(imageAPIURL, formData)
                     .then(res => {
-                        console.log('after image upload', res.data.data.url)
+                        const photoURL = res.data.data.display_url;
 
-                        const userProfile = {
-                            displayName: data.name,
-                            photoURL: res.data.data.url
-                        }
-
-                        updateUserProfile(userProfile)
+                        updateUserProfile(data.name, photoURL)
                             .then(() => {
-                                console.log('profile updated')
-                                navigate(location.state || '/');
+                                console.log('Profile updated');
+
+                                // Auto navigate
+                                navigate(location.state?.from?.pathname || '/');
                             })
-                            .catch(error => console.log(error))
+                            .catch(error => console.log(error));
                     })
+                    .catch(err => console.log(err));
             })
-            .catch(error => {
-                console.log(error)
-            })
-    }
+            .catch(error => console.log(error));
+    };
+
 
     return (
         <div>

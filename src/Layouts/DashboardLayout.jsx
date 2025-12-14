@@ -1,4 +1,5 @@
 import React from 'react';
+import { CgProfile } from 'react-icons/cg';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { IoBookmarks, IoBookSharp, IoCreate } from 'react-icons/io5';
 import { Link, NavLink, Outlet } from 'react-router';
@@ -72,6 +73,15 @@ const DashboardLayout = () => {
                                         <IoBookmarks />
                                     </span>
                                     <span className="is-drawer-close:hidden"> My Orders</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/dashboard/my-profile' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Profile">
+                                    {/* Settings icon */}
+                                    <span className='text-xl'>
+                                        <CgProfile />
+                                    </span>
+                                    <span className="is-drawer-close:hidden"> My Profile </span>
                                 </NavLink>
                             </li>
                         </ul>
