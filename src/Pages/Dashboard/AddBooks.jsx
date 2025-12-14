@@ -3,10 +3,12 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
 
 const AddBooks = () => {
+    const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
 
-    const axiosSecure = useAxiosSecure()
     const {
         register,
         handleSubmit,
@@ -14,7 +16,6 @@ const AddBooks = () => {
     } = useForm();
 
     const handleAddBook = (data) => {
-
         Swal.fire({
             title: "Are you sure?",
             text: `You want to add this book?`,
@@ -31,34 +32,28 @@ const AddBooks = () => {
                     const formData = new FormData();
                     formData.append("image", imageFile);
 
-                    const imageAPIURL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_bb}`
+                    const imageAPIURL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_bb}`;
 
                     const imgRes = await axios.post(imageAPIURL, formData);
-                    console.log("Image Uploaded:", imgRes.data.data.url);
-                    const imageURL = imgRes.data.data.url;
+                    const imageURL = imgRes.data.data.display_url;
 
                     // Build book data
                     const bookInfo = {
                         name: data.name,
                         author: data.author,
                         price: parseFloat(data.price),
-                        status: data.status,
+                        status: data.status.toLowerCase(),
                         description: data.description,
                         image: imageURL,
+                        email: user.email,
                         createdAt: new Date(),
                     };
 
-                    console.log("Book Data:", bookInfo);
-
-                    // Save book 
-
-                    // const res = await axios.post('http://localhost:3000/books', bookInfo);
-                    // console.log("Book saved:", res.data);
-
+                    // Save book
                     axiosSecure.post('/books', bookInfo)
-                    .then(res =>{
-                        console.log(res.data)
-                    })
+                        .then(res => {
+                            console.log(res.data);
+                        });
 
                     // Show success
                     Swal.fire({
@@ -89,6 +84,19 @@ const AddBooks = () => {
             </h2>
 
             <form onSubmit={handleSubmit(handleAddBook)} className="space-y-4">
+
+                {/* User Email */}
+                <div>
+                    <label className="font-semibold">User Email</label>
+                    <input
+                        type="email"
+                        defaultValue={user?.email}
+                        readOnly
+                        {...register("email")}
+                        className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+                    />
+                </div>
+
                 {/* Book Name */}
                 <div>
                     <label className="font-semibold">Book Name</label>

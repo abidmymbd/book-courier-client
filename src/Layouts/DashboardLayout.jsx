@@ -1,5 +1,6 @@
 import React from 'react';
 import { IoMdAddCircleOutline } from 'react-icons/io';
+import { IoBookSharp } from 'react-icons/io5';
 import { Link, NavLink, Outlet } from 'react-router';
 
 const DashboardLayout = () => {
@@ -44,6 +45,15 @@ const DashboardLayout = () => {
                                         <IoMdAddCircleOutline />
                                     </span>
                                     <span className="is-drawer-close:hidden">Add a Book</span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/dashboard/my-added-books' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Added Books">
+                                    {/* Settings icon */}
+                                    <span className='text-lg'>
+                                        <IoBookSharp />
+                                    </span>
+                                    <span className="is-drawer-close:hidden">My Added Books</span>
                                 </NavLink>
                             </li>
                             <li>

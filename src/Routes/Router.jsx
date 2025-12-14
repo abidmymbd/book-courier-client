@@ -9,6 +9,8 @@ import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import AddBooks from "../Pages/Dashboard/AddBooks";
 import Books from "../Pages/Books/Books";
+import MyAddedBooks from "../Pages/Dashboard/MyAddedBooks";
+import EditBook from "../Pages/Dashboard/EditBook";
 
 
 export const router = createBrowserRouter([
@@ -53,6 +55,14 @@ export const router = createBrowserRouter([
             {
                 path: 'add-book',
                 Component: AddBooks,
+            },
+            {
+                path: 'my-added-books',
+                Component: MyAddedBooks,
+            },
+            {
+                path: 'edit-book/:id',
+                Component: EditBook,
             },
         ]
     },

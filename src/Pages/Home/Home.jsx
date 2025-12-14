@@ -3,11 +3,13 @@ import Banner from './Banner';
 import Reviews from './Reviews';
 import Brands from './Brands';
 import Coverage from '../Coverage/Coverage';
+import LatestBooksSection from './LatestBooksSection';
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            <LatestBooksSection></LatestBooksSection>
             <Brands></Brands>
             <Reviews></Reviews>
 
