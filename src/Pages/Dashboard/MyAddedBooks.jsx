@@ -60,7 +60,7 @@ const MyAddedBooks = () => {
 
     return (
         <div className="p-6">
-            <h2 className="text-2xl text-primary font-bold mb-6">My Books</h2>
+            <h2 className="text-2xl text-primary font-bold mb-6">My Added Books</h2>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
                     <thead>

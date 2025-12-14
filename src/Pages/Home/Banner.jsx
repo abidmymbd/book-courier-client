@@ -13,7 +13,7 @@ const Banner = () => {
 
                 {/* Bottom Center Button */}
                 <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-                    <Link to="/allbooks" className="btn btn-secondary btn-lg px-6 py-2 text-white">
+                    <Link to="/books" className="btn btn-secondary btn-lg px-6 py-2 text-white">
                         Explore All Books
                     </Link>
                 </div>
@@ -30,7 +30,7 @@ const Banner = () => {
 
                 {/* Bottom Center Button */}
                 <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-                    <Link to="/allbooks" className="btn btn-secondary btn-lg px-6 py-2 text-white">
+                    <Link to="/books" className="btn btn-secondary btn-lg px-6 py-2 text-white">
                         Explore All Books
                     </Link>
                 </div>
@@ -47,7 +47,7 @@ const Banner = () => {
 
                 {/* Bottom Center Button */}
                 <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-                    <Link to="/allbooks" className="btn btn-secondary btn-lg px-6 py-2 text-white">
+                    <Link to="/books" className="btn btn-secondary btn-lg px-6 py-2 text-white">
                         Explore All Books
                     </Link>
                 </div>

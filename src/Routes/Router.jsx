@@ -11,6 +11,10 @@ import AddBooks from "../Pages/Dashboard/AddBooks";
 import Books from "../Pages/Books/Books";
 import MyAddedBooks from "../Pages/Dashboard/MyAddedBooks";
 import EditBook from "../Pages/Dashboard/EditBook";
+import SingleBook from "../Pages/Books/SingleBook";
+import Orders from "../Pages/Dashboard/Orders";
+import MyOrders from "../Pages/Dashboard/MyOrders";
+import Payment from "../Pages/Dashboard/Payment";
 
 
 export const router = createBrowserRouter([
@@ -26,6 +30,10 @@ export const router = createBrowserRouter([
             {
                 path: 'books',
                 Component: Books,
+            },
+            {
+                path: 'books/:id',
+                Component: SingleBook,
             },
             {
                 path: 'coverage',
@@ -59,6 +67,18 @@ export const router = createBrowserRouter([
             {
                 path: 'my-added-books',
                 Component: MyAddedBooks,
+            },
+            {
+                path: 'orders',
+                Component: Orders,
+            },
+            {
+                path: 'my-orders',
+                Component: MyOrders,
+            },
+            {
+                path: 'payment/:orderId',
+                Component: Payment,
             },
             {
                 path: 'edit-book/:id',
