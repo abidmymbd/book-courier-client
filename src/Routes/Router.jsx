@@ -18,6 +18,8 @@ import Payment from "../Pages/Dashboard/Payment";
 import PaymentSuccess from "../Pages/Dashboard/PaymentSuccess";
 import PaymentCancel from "../Pages/Dashboard/PaymentCancel";
 import MyProfile from "../Pages/Dashboard/MyProfile";
+import Invoices from "../Pages/Dashboard/Invoices";
+import AllUsers from "../Pages/Dashboard/AllUsers";
 
 
 export const router = createBrowserRouter([
@@ -98,6 +100,14 @@ export const router = createBrowserRouter([
             {
                 path: 'my-profile',
                 Component: MyProfile,
+            },
+            {
+                path: 'invoices',
+                Component: Invoices,
+            },
+            {
+                path: 'all-users',
+                Component: AllUsers,
             },
         ]
     },

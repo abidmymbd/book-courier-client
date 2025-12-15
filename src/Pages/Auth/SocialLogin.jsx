@@ -1,24 +1,36 @@
 import React from 'react';
 import useAuth from '../../Hooks/useAuth';
 import { useLocation, useNavigate } from 'react-router';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const SocialLogin = () => {
     const { signInGoogle } = useAuth();
 
     const location = useLocation();
     const navigate = useNavigate();
+    const axiosSecure = useAxiosSecure()
 
 
-    const handleGoogleSignIn = () => {
-        signInGoogle()
-            .then(result => {
-                console.log(result.user);
-                navigate(location.state || '/');
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
+    const handleGoogleSignIn = async () => {
+        try {
+            const result = await signInGoogle();
+            const user = result.user;
+
+            const userInfo = {
+                email: user.email,
+                displayName: user.displayName,
+                photoURL: user.photoURL,   
+            };
+
+            
+            await axiosSecure.post('/users', userInfo);
+
+            navigate(location.state?.from?.pathname || '/');
+
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <div className='text-center pb-8'>

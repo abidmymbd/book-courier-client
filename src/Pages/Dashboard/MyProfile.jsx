@@ -65,7 +65,7 @@ const Profile = () => {
     return (
         <div className="flex flex-col items-center mt-10 w-11/12 mx-auto">
             <img
-                src={user.photoURL || "https://i.ibb.co/4pDNDk1/avatar.png"}
+                src={user.photoURL || "avatar.png"}
                 alt="User"
                 className="w-32 h-32 rounded-full border-4 border-gray-300"
             />

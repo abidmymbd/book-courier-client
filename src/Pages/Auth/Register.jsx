@@ -4,14 +4,18 @@ import useAuth from '../../Hooks/useAuth';
 import { Link, useLocation, useNavigate } from 'react-router';
 import SocialLogin from './SocialLogin';
 import axios from 'axios';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const Register = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm()
     const { registerUser, updateUserProfile } = useAuth()
+    const axiosSecure = useAxiosSecure()
 
     const location = useLocation();
     const navigate = useNavigate();
+
+
 
     const handleRegistration = (data) => {
         const profilePic = data.photo[0];
@@ -27,11 +31,17 @@ const Register = () => {
                     .then(res => {
                         const photoURL = res.data.data.display_url;
 
+                        const userInfo = {
+                            email: data.email,
+                            displayName: data.name,
+                            photoURL: res.data.data.display_url
+                        }
+                        axiosSecure.post('/users', userInfo)
+
                         updateUserProfile(data.name, photoURL)
                             .then(() => {
                                 console.log('Profile updated');
 
-                                // Auto navigate
                                 navigate(location.state?.from?.pathname || '/');
                             })
                             .catch(error => console.log(error));
