@@ -68,7 +68,7 @@ const Orders = () => {
                             <th>Book Name</th>
                             <th>Price (BDT)</th>
                             <th>Status</th>
-                            <th>Payment Status</th>
+                            <th className='md:flex'> <p className='mr-1'>Payment</p> <p>Status</p> </th>
                             <th>Cancel</th>
                         </tr>
                     </thead>

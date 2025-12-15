@@ -20,6 +20,7 @@ import PaymentCancel from "../Pages/Dashboard/PaymentCancel";
 import MyProfile from "../Pages/Dashboard/MyProfile";
 import Invoices from "../Pages/Dashboard/Invoices";
 import AllUsers from "../Pages/Dashboard/AllUsers";
+import ManageBooks from "../Pages/Dashboard/ManageBooks";
 
 
 export const router = createBrowserRouter([
@@ -108,6 +109,10 @@ export const router = createBrowserRouter([
             {
                 path: 'all-users',
                 Component: AllUsers,
+            },
+            {
+                path: 'manage-books',
+                Component: ManageBooks,
             },
         ]
     },

@@ -3,6 +3,7 @@ import { CgProfile } from 'react-icons/cg';
 import { FaFileInvoice, FaUsers } from 'react-icons/fa';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { IoBookmarks, IoBookSharp, IoCreate } from 'react-icons/io5';
+import { LuBookKey } from 'react-icons/lu';
 import { Link, NavLink, Outlet } from 'react-router';
 
 const DashboardLayout = () => {
@@ -83,6 +84,15 @@ const DashboardLayout = () => {
                                         <FaFileInvoice />
                                     </span>
                                     <span className="is-drawer-close:hidden"> Invoices </span>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/dashboard/manage-books' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage Books">
+                                    {/* Settings icon */}
+                                    <span className='text-xl'>
+                                        <LuBookKey />
+                                    </span>
+                                    <span className="is-drawer-close:hidden"> Manage Books </span>
                                 </NavLink>
                             </li>
                             <li>
