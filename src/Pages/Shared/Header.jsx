@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
 
 const Header = () => {
 
     const { user, logOut } = useAuth();
+    const [theme, setTheme] = useState('light');
+
+    useEffect(() => {
+        document.querySelector('html').setAttribute('data-theme', theme);
+    }, [theme]);
+
+    const handleToggle = (e) => {
+        setTheme(e.target.checked ? 'dark' : 'light');
+    };
 
     const handleSignOut = () => {
         logOut()
@@ -73,6 +82,17 @@ const Header = () => {
                         </Link>
                     )
                 }
+                <div className='ml-3'>
+                    <label className="flex cursor-pointer gap-2 items-center">
+                        <input
+                            type="checkbox"
+                            onChange={handleToggle}
+                            checked={theme === 'dark'}
+                            className="toggle toggle-success"
+                        />
+                        <span className="text-sm">{theme === 'dark' ? 'Dark' : 'Light'}</span>
+                    </label>
+                </div>
 
             </div>
         </div>
