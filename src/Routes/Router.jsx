@@ -24,7 +24,6 @@ import ManageBooks from "../Pages/Dashboard/ManageBooks";
 import MyWishlist from "../Pages/Dashboard/MyWishlist";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 
-
 export const router = createBrowserRouter([
     {
         path: "/",

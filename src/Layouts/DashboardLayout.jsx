@@ -5,8 +5,10 @@ import { IoMdAddCircleOutline } from 'react-icons/io';
 import { IoBookmarks, IoBookSharp, IoCreate } from 'react-icons/io5';
 import { LuBookKey, LuBookMarked } from 'react-icons/lu';
 import { Link, NavLink, Outlet } from 'react-router';
-import useAuth from '../hooks/useAuth';
-import useAxiosSecure from '../hooks/useAxiosSecure';
+import useAuth from '../Hooks/useAuth';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import DashboardHome from '../Pages/Dashboard/DashboardHome';
+
 
 const DashboardLayout = () => {
     const { user } = useAuth();
@@ -44,6 +46,7 @@ const DashboardLayout = () => {
                         </label>
                         <div className="px-4 text-primary font-bold">Book Courier Dashboard</div>
                     </nav>
+                    <DashboardHome></DashboardHome>
 
                     <Outlet />
                 </div>

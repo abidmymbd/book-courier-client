@@ -1,17 +1,3 @@
-// import React from 'react';
-
-// const LatestBooksSection = () => {
-//     return (
-//         <div className='my-20'>
-//             <div className='text-center my-10'> <p className='text-secondary text-lg'>New Books</p> <h2 className='text-primary text-4xl font-bold'>Latest Books Section</h2> </div>
-
-//         </div>
-//     );
-// };
-
-// export default LatestBooksSection;
-
-
 
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
