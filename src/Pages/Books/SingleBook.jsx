@@ -26,7 +26,7 @@ const SingleBook = () => {
     });
 
     // Fetch user orders to check if they can review
-    const { data: orders = [] } = useQuery({
+    const { data: orders = [], refetch: refetchOrders } = useQuery({
         queryKey: ['userOrders', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/orders?email=${user?.email}`);
@@ -36,20 +36,19 @@ const SingleBook = () => {
 
     const hasOrdered = orders.some(order => order.bookId === id);
 
-    // Fetch reviews
-    const fetchReviews = async () => {
-        if (!book._id) return;
-        try {
-            const res = await axiosSecure.get(`/reviews?bookId=${book._id}`);
-            setReviews(res.data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
+    // Fetch reviews safely (yellow-free)
     useEffect(() => {
-        fetchReviews();
-    }, [book._id]);
+        const fetchData = async () => {
+            if (!book._id) return;
+            try {
+                const res = await axiosSecure.get(`/reviews?bookId=${book._id}`);
+                setReviews(res.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchData();
+    }, [book._id, axiosSecure]);
 
     // Handle order submission
     const handleOrder = async (e) => {
@@ -75,6 +74,7 @@ const SingleBook = () => {
                 });
                 setPhone('');
                 setAddress('');
+                refetchOrders(); // ✅ Refetch orders immediately to show review form
             }
         } catch (err) {
             console.error(err);
@@ -104,7 +104,9 @@ const SingleBook = () => {
                 });
                 setRating(5);
                 setComment('');
-                fetchReviews();
+                // Fetch reviews again after submission
+                const res2 = await axiosSecure.get(`/reviews?bookId=${book._id}`);
+                setReviews(res2.data);
             }
         } catch (error) {
             console.error(error);
@@ -256,4 +258,3 @@ const SingleBook = () => {
 };
 
 export default SingleBook;
-
