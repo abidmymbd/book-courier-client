@@ -21,6 +21,7 @@ import MyProfile from "../Pages/Dashboard/MyProfile";
 import Invoices from "../Pages/Dashboard/Invoices";
 import AllUsers from "../Pages/Dashboard/AllUsers";
 import ManageBooks from "../Pages/Dashboard/ManageBooks";
+import MyWishlist from "../Pages/Dashboard/MyWishlist";
 
 
 export const router = createBrowserRouter([
@@ -81,6 +82,10 @@ export const router = createBrowserRouter([
             {
                 path: 'my-orders',
                 Component: MyOrders,
+            },
+            {
+                path: 'my-wishlist',
+                Component: MyWishlist,
             },
             {
                 path: 'payment/:orderId',

@@ -82,6 +82,31 @@ const SingleBook = () => {
         }
     };
 
+    const handleAddToWishlist = async () => {
+        if (!user) {
+            return Swal.fire('Login required', 'Please login first', 'warning');
+        }
+
+        const wishlistItem = {
+            bookId: book._id,
+            bookName: book.name,
+            userEmail: user.email
+        };
+
+        try {
+            const res = await axiosSecure.post('/wishlist', wishlistItem);
+            if (res.data.insertedId) {
+                Swal.fire('Added!', 'Book added to wishlist', 'success');
+            } else {
+                Swal.fire('Info', 'Already in wishlist', 'info');
+            }
+        } catch (error) {
+            console.error(error);
+            Swal.fire('Error', 'Failed to add wishlist', 'error');
+        }
+    };
+
+
     // Handle review submission
     const handleReviewSubmit = async (e) => {
         e.preventDefault();
@@ -145,6 +170,12 @@ const SingleBook = () => {
                     onClick={() => document.getElementById('order_modal').showModal()}
                     className="my-10 border-primary border py-2 px-10 rounded-lg text-primary font-bold hover:bg-secondary hover:text-white hover:border-secondary transform transition duration-300">
                     Order Now
+                </button>
+
+                <button
+                    onClick={handleAddToWishlist}
+                    className="ml-5 my-10 border-primary border py-2 px-10 rounded-lg text-primary font-bold hover:bg-secondary hover:text-white hover:border-secondary transform transition duration-300">
+                    Add to Wishlist
                 </button>
             </div>
 
