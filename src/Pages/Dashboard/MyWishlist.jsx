@@ -16,7 +16,20 @@ const MyWishlist = () => {
         }
     });
 
-    
+    const handleRemove = async (id) => {
+        const confirm = await Swal.fire({
+            title: 'Remove?',
+            text: 'Remove from wishlist?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes'
+        });
+
+        if (!confirm.isConfirmed) return;
+
+        await axiosSecure.delete(`/wishlist/${id}`);
+        refetch();
+    };
 
     return (
         <div className="p-6">
@@ -38,7 +51,7 @@ const MyWishlist = () => {
                                 <td className='text-primary font-semibold'>{item.bookName}</td>
                                 <td>
                                     <button
-                                        
+                                        onClick={() => handleRemove(item._id)}
                                         className="btn btn-sm border-secondary border rounded-lg text-secondary font-bold hover:bg-secondary hover:text-white hover:border-secondary transform transition duration-300">
                                         Remove
                                     </button>
