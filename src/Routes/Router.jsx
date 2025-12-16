@@ -22,6 +22,7 @@ import Invoices from "../Pages/Dashboard/Invoices";
 import AllUsers from "../Pages/Dashboard/AllUsers";
 import ManageBooks from "../Pages/Dashboard/ManageBooks";
 import MyWishlist from "../Pages/Dashboard/MyWishlist";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 
 
 export const router = createBrowserRouter([
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
             {
                 path: 'books',
                 Component: Books,
+            },
+            {
+                path: 'about-us',
+                Component: AboutUs,
             },
             {
                 path: 'books/:id',
