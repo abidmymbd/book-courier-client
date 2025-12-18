@@ -48,7 +48,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <Link to='/'>
-                    <span className="text-3xl font-extrabold">Book Courier</span>
+                    <span className="text-lg md:text-3xl font-extrabold">Book Courier</span>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -67,7 +67,7 @@ const Header = () => {
                                 className="w-10 h-10 rounded-full" />
                             <button
                                 onClick={handleSignOut}
-                                className="btn text-secondary font-semibold px-6 hover:bg-secondary hover:text-white transition-all duration-200 delay-100">
+                                className="btn text-secondary font-semibold px-4 hover:bg-secondary hover:text-white transition-all duration-200 delay-100">
                                 Sign Out
                             </button>
                         </div>
@@ -76,13 +76,13 @@ const Header = () => {
                 {
                     !user && (
                         <Link
-                            className='btn text-secondary font-semibold px-6 hover:bg-secondary hover:text-white transition-all duration-200 delay-100'
+                            className='btn text-secondary font-semibold px-4 hover:bg-secondary hover:text-white transition-all duration-200 delay-100'
                             to="/login">
                             Sign in
                         </Link>
                     )
                 }
-                <div className='ml-3'>
+                <div className='ml-3 hidden md:block'>
                     <label className="flex cursor-pointer gap-2 items-center">
                         <input
                             type="checkbox"

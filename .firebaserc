@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "book-courier-bd",
+    "prod": "book-courier-bd"
+  },
+  "targets": {},
+  "etags": {}
+}
