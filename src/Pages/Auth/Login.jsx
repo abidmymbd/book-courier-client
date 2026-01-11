@@ -6,7 +6,7 @@ import SocialLogin from './SocialLogin';
 
 const Login = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, setValue } = useForm();
     const { signInUser } = useAuth();
 
     const location = useLocation();
@@ -24,6 +24,14 @@ const Login = () => {
             })
     }
 
+    // Demo Login function
+    const handleDemoLogin = () => {
+        setValue('email', 'demo@example.com');
+        setValue('password', 'Demo@123');
+
+        handleSubmit(handleLogin)();
+    };
+
     return (
         <div>
 
@@ -36,6 +44,7 @@ const Login = () => {
                     <label className="label">Email</label>
                     <input type="email" {...register('email', { required: true })} className="input w-full" placeholder="Email" />
                     {errors.email?.type === 'required' && <p className='text-red-500'>Email is required.</p>}
+
                     {/* password */}
                     <label className="label">Password</label>
                     <input type="password"  {...register('password', {
@@ -47,17 +56,41 @@ const Login = () => {
                     {errors.password?.type === 'minLength' && <p className='text-red-500'>
                         Password must be 6 characters or longer
                     </p>}
-                    {errors.password?.type === 'pattern' && <p className='text-red-500'>Password must have at least one uppercase, at least one lowercase, at least one number, and at least one special characters</p>}
+                    {errors.password?.type === 'pattern' && <p className='text-red-500'>
+                        Password must have at least one uppercase, at least one lowercase, at least one number, and at least one special characters
+                    </p>}
 
-                    <button className="btn btn-primary text-white mt-4 hover:bg-secondary hover:text-white transition-all duration-200 delay-100 border-none">Login</button>
+                    {/* Login button */}
+                    <button className="btn btn-primary text-white mt-4 hover:bg-secondary hover:text-white transition-all duration-200 delay-100 border-none">
+                        Login
+                    </button>
+
+                    {/* Demo Login button */}
+                    <button
+                        type="button"
+                        onClick={handleDemoLogin}
+                        className="btn btn-secondary text-white mt-4 hover:bg-primary transition-all duration-200 border-none w-full"
+                    >
+                        Demo Login
+                    </button>
+
                 </fieldset>
-                <p>New to Book Courier ?<Link
-                    state={location.state}
-                    className='text-blue-400 underline'
-                    to="/register">Register</Link>
+
+                <p className='mt-4'>
+                    New to Book Courier ?{' '}
+                    <Link
+                        state={location.state}
+                        className='text-blue-400 underline'
+                        to="/register"
+                    >
+                        Register
+                    </Link>
                 </p>
             </form>
-            <SocialLogin></SocialLogin>
+
+            {/* Social Login */}
+            <SocialLogin />
+
         </div>
     );
 };

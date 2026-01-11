@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CgProfile } from 'react-icons/cg';
-import { FaFileInvoice, FaUsers } from 'react-icons/fa';
+import { FaFileInvoice, FaHome, FaUsers } from 'react-icons/fa';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { IoBookmarks, IoBookSharp, IoCreate } from 'react-icons/io5';
 import { LuBookKey, LuBookMarked } from 'react-icons/lu';
@@ -46,7 +46,6 @@ const DashboardLayout = () => {
                         </label>
                         <div className="px-4 text-primary font-bold">Book Courier Dashboard</div>
                     </nav>
-                    <DashboardHome></DashboardHome>
 
                     <Outlet />
                 </div>
@@ -69,6 +68,13 @@ const DashboardLayout = () => {
                                     </svg>
                                     <span className="is-drawer-close:hidden">Homepage</span>
                                 </Link>
+                            </li>
+
+                            <li>
+                                <NavLink to='/dashboard' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Dashboard Home">
+                                    <span className='text-xl'><FaHome /></span>
+                                    <span className="is-drawer-close:hidden"> Dashboard Home </span>
+                                </NavLink>
                             </li>
 
                             {/* USER */}

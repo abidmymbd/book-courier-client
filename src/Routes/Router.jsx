@@ -23,6 +23,8 @@ import AllUsers from "../Pages/Dashboard/AllUsers";
 import ManageBooks from "../Pages/Dashboard/ManageBooks";
 import MyWishlist from "../Pages/Dashboard/MyWishlist";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import PrivacyPolicy from "../Pages/AboutUs/PrivacyPolicy";
+import DashboardHome from "../Pages/Dashboard/DashboardHome";
 
 export const router = createBrowserRouter([
     {
@@ -41,6 +43,10 @@ export const router = createBrowserRouter([
             {
                 path: 'about-us',
                 Component: AboutUs,
+            },
+            {
+                path: 'privacy-policy',
+                Component: PrivacyPolicy,
             },
             {
                 path: 'books/:id',
@@ -71,6 +77,10 @@ export const router = createBrowserRouter([
         path: "dashboard",
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
+            {
+                index: true,
+                Component: DashboardHome,
+            },
             {
                 path: 'add-book',
                 Component: AddBooks,

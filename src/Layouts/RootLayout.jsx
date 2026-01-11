@@ -6,7 +6,6 @@ import Footer from '../Pages/Shared/Footer';
 const RootLayout = () => {
     return (
         <div className='w-11/12 mx-auto dark'>
-
             <Header></Header>
             <Outlet></Outlet>
             <Footer></Footer>
